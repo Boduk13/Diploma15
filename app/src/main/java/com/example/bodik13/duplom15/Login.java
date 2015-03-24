@@ -54,6 +54,18 @@ public class Login extends ActionBarActivity {
         });
 
         //---
+
+        //button facebook for test mysql
+        Button btn_test_mysql = (Button) findViewById(R.id.facebook);
+        btn_test_mysql.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent maine = new Intent(getApplicationContext(), AllProductsActivity.class);
+                startActivity(maine);
+            }
+        });
+
+        //---
     }
 
 
