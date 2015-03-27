@@ -9,6 +9,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.bodik13.duplom15.slidingmenu.MainActivity;
+
 
 public class Login extends ActionBarActivity {
 
@@ -48,8 +50,8 @@ public class Login extends ActionBarActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent maine = new Intent(Login.this, Main.class);
-                startActivity(maine);
+                Intent maine = new Intent(Login.this, MainActivity.class);
+               startActivity(maine);
             }
         });
 
@@ -60,8 +62,6 @@ public class Login extends ActionBarActivity {
         btn_test_mysql.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent maine = new Intent(getApplicationContext(), AllProductsActivity.class);
-                startActivity(maine);
             }
         });
 
