@@ -2,7 +2,6 @@ package com.example.bodik13.duplom15.slidingmenu;
 
 import java.util.ArrayList;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.res.Configuration;
@@ -173,10 +172,10 @@ public class MainActivity extends ActionBarActivity {
 			fragment = new HomeFragment();
 			break;
 		case 1:
-			fragment = new FindPeopleFragment();
+			fragment = new AddTravel();
 			break;
 		case 2:
-			fragment = new PhotosFragment();
+			fragment = new Find_travel();
 			break;
 		case 3:
 			fragment = new CommunityFragment();

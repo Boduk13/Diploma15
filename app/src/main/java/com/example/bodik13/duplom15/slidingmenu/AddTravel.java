@@ -8,15 +8,15 @@ import android.view.ViewGroup;
 
 import com.example.bodik13.duplom15.R;
 
-public class PhotosFragment extends Fragment {
+public class AddTravel extends Fragment {
 	
-	public PhotosFragment(){}
+	public AddTravel(){}
 	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
  
-        View rootView = inflater.inflate(R.layout.fragment_photos, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_find_people, container, false);
          
         return rootView;
     }

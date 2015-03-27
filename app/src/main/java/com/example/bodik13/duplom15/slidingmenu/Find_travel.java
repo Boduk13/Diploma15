@@ -8,15 +8,15 @@ import android.view.ViewGroup;
 
 import com.example.bodik13.duplom15.R;
 
-public class FindPeopleFragment extends Fragment {
+public class Find_travel extends Fragment {
 	
-	public FindPeopleFragment(){}
+	public Find_travel(){}
 	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
  
-        View rootView = inflater.inflate(R.layout.fragment_find_people, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_find_travel, container, false);
          
         return rootView;
     }

@@ -3,10 +3,10 @@
     <string name="title_activity_main">MainActivity</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Налаштування</string>
     <string name="title_activity_main2">Main2Activity</string>
 
-    <string name="add_travel"></string>
+    <string name="add_travel">Запропонувати поїздку</string>
     <string name="find_travel">Знайти поїздку</string>
     <string name="title_section3">Section 3</string>
 
@@ -14,7 +14,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_example">Example action</string>
-    <string name="title_activity_login">Login</string>
+    <string name="title_activity_login">Вхід</string>
 
     <string name="title_activity_registration1">Registration1</string>
     <string name="dummy_button">Dummy Button</string>
@@ -30,12 +30,12 @@
   <string name="drawer_open">Slider Menu Opened</string> 
   <string name="drawer_close">Slider Menu Closed</string> 
 <string-array name="nav_drawer_items">
-  <item>Home</item> 
-  <item>Find People</item> 
-  <item>Photos</item> 
+  <item>Головний екран</item>
+  <item>Запропонувати поїздку</item>
+  <item>Знайти поїздку</item>
   <item>Communities</item> 
-  <item>Pages</item> 
-  <item>What\'s Hot</item> 
+  <item>Персональна сторінка</item>
+  <item>Гарячі пропозиції</item>
   </string-array>
 - <!--  Nav Drawer List Item Icons 
   --> 
