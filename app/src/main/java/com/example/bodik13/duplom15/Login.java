@@ -50,6 +50,7 @@ public class Login extends ActionBarActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 Intent maine = new Intent(Login.this, MainActivity.class);
                startActivity(maine);
             }
@@ -62,6 +63,7 @@ public class Login extends ActionBarActivity {
         btn_test_mysql.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
             }
         });
 
