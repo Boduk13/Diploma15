@@ -4,45 +4,72 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="5dp">
+        android:background="@drawable/ovalborder_sir_color"
+        android:cacheColorHint="@android:color/transparent"
+        android:padding="3px"
+
+
+        >
 
         <LinearLayout
             android:id="@+id/linearLayout1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5sp"
+            android:layout_weight="3"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/firstName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+
                 android:text=""
-                android:textColor="@color/black_overlay"
-                android:textSize="20sp">
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:paddingLeft="15px">
             </TextView>
 
-            <TextView
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingLeft="15px">
 
-                android:id="@+id/tvPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:textColor="@color/black_overlay"
-                android:layout_marginRight="10dp"
-                android:text="">
-            </TextView>
+                <TextView
+                    android:id="@+id/date_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black_overlay"
+                    android:textSize="15sp"
+                    android:layout_alignParentLeft="true"
+                    />
+
+                <TextView
+
+                    android:id="@+id/tvPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/black_overlay"
+                    android:layout_marginRight="10sp"
+                    android:text=""
+                    android:textStyle="italic">
+                </TextView>
+            </RelativeLayout>
+
             <TextView
                 android:id="@+id/id_travel"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="gone"/>
+
+
         </LinearLayout>
         <ImageView
             android:id="@+id/ivImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_launcher">
+            android:src="@drawable/select">
         </ImageView>
     </LinearLayout>

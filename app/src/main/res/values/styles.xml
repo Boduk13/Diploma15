@@ -4,13 +4,20 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/fon_trav</item>
+
     </style>
 
     <style name="FullscreenTheme" parent="android:Theme.NoTitleBar">
         <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowBackground">@null</item>
+
         <item name="metaButtonBarStyle">@style/ButtonBar</item>
         <item name="metaButtonBarButtonStyle">@style/ButtonBarButton</item>
+
+
+
+
+
     </style>
 
     <!-- Backward-compatible version of ?android:attr/buttonBarStyle -->

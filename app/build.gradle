@@ -28,6 +28,7 @@ dependencies {
     compile 'com.android.support:support-v4:22.0.0'
     compile files('libs/json-20090211.jar')
     compile 'com.instagram:ig-json-parser-processor:0.0.4'
+    compile 'com.beardedhen:androidbootstrap:+'
 }
 
 
