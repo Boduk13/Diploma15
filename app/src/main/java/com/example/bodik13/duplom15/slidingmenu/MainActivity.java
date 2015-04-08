@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.bodik13.duplom15.Map;
 import com.example.bodik13.duplom15.R;
 import com.example.bodik13.duplom15.slidingmenu.adapter.NavDrawerListAdapter;
 import com.example.bodik13.duplom15.slidingmenu.model.NavDrawerItem;
@@ -161,6 +163,9 @@ public class MainActivity extends ActionBarActivity {
 		return super.onPrepareOptionsMenu(menu);
 	}
 
+
+
+
 	/**
 	 * Diplaying fragment view for selected nav drawer list item
 	 * */
@@ -184,6 +189,8 @@ public class MainActivity extends ActionBarActivity {
 			fragment = new PagesFragment();
 			break;
 		case 5:
+
+
 			fragment = new WhatsHotFragment();
 			break;
 

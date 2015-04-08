@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_gravity="center"
+    android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="700px"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:alpha=".8"
+        >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/hide_layaut"
+            android:visibility="visible"
+            >
+
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@drawable/roundborder"
+                android:layout_margin="10dp"
+                android:weightSum="1"
+                android:padding="15px"
+                >
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Ім'я:"/>
+                <TextView
+                    android:id="@+id/sunname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Прізвище:"/>
+                <TextView
+                    android:id="@+id/age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Вік:"/>
+                <TextView
+                    android:id="@+id/drivingExp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Стаж водіння:"/>
+                <TextView
+                    android:id="@+id/phone_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Номер телефону:"/>
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="E-Mail:"/>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@drawable/roundborder"
+                android:layout_margin="10dp"
+                android:weightSum="1"
+                android:padding="15px">
+                <TextView
+                    android:id="@+id/start_trav"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Початок маршруту:"/>
+                <TextView
+                    android:id="@+id/end_trav"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Кінець маршруту:"/>
+
+                <TextView
+                    android:id="@+id/seats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Кількість місць:"/>
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Ціна за місце:"/>
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Дата поїздки:"/>
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Час поїздки:"/>
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/map_layout"
+                android:visibility="visible"
+                android:padding="5dp"
+                android:background="@drawable/roundborder">
+                <fragment
+                    android:id="@+id/map"
+                    android:layout_width="match_parent"
+                    android:layout_height="500px"
+                    class="com.google.android.gms.maps.MapFragment"/>
+
+                </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+
+
+
+

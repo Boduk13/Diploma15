@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,8 +22,17 @@ import android.widget.TextView;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.example.bodik13.duplom15.BoxAdapter;
 
+import com.example.bodik13.duplom15.Map;
 import com.example.bodik13.duplom15.R;
 import com.example.bodik13.duplom15.Travel;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -45,7 +55,11 @@ public class Find_travel extends Fragment {
     public String TAG_ID="id";
     public String TAG_startPoint="startPoint";
     public String TAG_finishPoint="finishPoint";
-    public String TAG_intermedientePoints="intermedientePoints";
+    public String TAG_waypoint1="waypoint1";
+    public String TAG_waypoint2="waypoint2";
+    public String TAG_waypoint3="waypoint3";
+    public String TAG_waypoint4="waypoint4";
+    public String TAG_waypoint5="waypoint5";
     public String TAG_price="price";
     public String TAG_seats="seats";
     public String TAG_dataFirst="dataFirst";
@@ -75,28 +89,22 @@ public class Find_travel extends Fragment {
     EditText finish = null;
     Button search = null;
     Button back = null;
+    Button on_map = null;
     ListView listViewTravels = null;
 
-    //view detail travel
-    TextView name = null;
-    TextView sunname = null;
-    TextView age = null;
-    TextView driveExp = null;
-    TextView phoneNumber = null;
-    TextView email = null;
 
-    TextView start_trav = null;
-    TextView end_trav = null;
-    TextView intermedientePoints = null;
-    TextView seats = null;
-    TextView price = null;
-    TextView date = null;
-    TextView time = null;
 
     LinearLayout hide_laya = null;
     LinearLayout main_laya = null;
     //TextView date_start = null;
     ArrayList<Travel> travels_arraylist = new ArrayList<Travel>();
+
+
+    ///google maps
+    GoogleMap mGoogleMap = null;
+    static final LatLng HAMBURG = new LatLng(53.558, 9.927);
+    static final LatLng KIEL = new LatLng(53.551, 9.993);
+    private GoogleMap map;
 
 	public Find_travel(){}
 	
@@ -104,6 +112,24 @@ public class Find_travel extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_find_travel, container, false);
+       /* View v = inflater.inflate(R.layout.fragment_find_travel, container, false);
+
+        map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+
+        Marker hamburg = map.addMarker(new MarkerOptions().position(HAMBURG)
+                .title("Hamburg"));
+        Marker kiel = map.addMarker(new MarkerOptions()
+                .position(KIEL)
+                .title("Kiel")
+                .snippet("Kiel is cool")
+                .icon(BitmapDescriptorFactory
+                        .fromResource(R.drawable.ic_launcher)));
+
+        // Move the camera instantly to hamburg with a zoom of 15.
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(HAMBURG, 15));
+
+        // Zoom in, animating the camera.
+        map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);*/
         return rootView;
     }
     @Override
@@ -111,17 +137,16 @@ public class Find_travel extends Fragment {
         // save views as variables in this method
         // "view" is the one returned from onCreateView
         start = (EditText) view.findViewById(R.id.start);
-        start = (EditText) view.findViewById(R.id.start);
         finish = (EditText) view.findViewById(R.id.finish);
         search = (Button) view.findViewById(R.id.search_btn);
         listViewTravels = (ListView) view.findViewById(R.id.list_travels);
         back = (Button) view.findViewById(R.id.btn_back);
+        on_map = (Button) view.findViewById(R.id.on_map);
         hide_laya = (LinearLayout) view.findViewById(R.id.hide_layaut);
         main_laya = (LinearLayout) view.findViewById(R.id.main_layout);
         ///_detail travel
-        start_trav = (TextView) view.findViewById(R.id.start_trav);
+     /*   start_trav = (TextView) view.findViewById(R.id.start_trav);
         end_trav = (TextView) view.findViewById(R.id.end_trav);
-        intermedientePoints = (TextView) view.findViewById(R.id.intermedientePoints);
         seats = (TextView) view.findViewById(R.id.seats);
         price = (TextView) view.findViewById(R.id.price);
         date = (TextView) view.findViewById(R.id.date);
@@ -131,17 +156,28 @@ public class Find_travel extends Fragment {
         age = (TextView) view.findViewById(R.id.age);
         driveExp = (TextView) view.findViewById(R.id.drivingExp);
         phoneNumber = (TextView) view.findViewById(R.id.phone_number);
-        email = (TextView) view.findViewById(R.id.email);
+        email = (TextView) view.findViewById(R.id.email);*/
 
         //---
+
+        //mGoogleMap = ((MapFragment) getChildFragmentManager().findFragmentById(R.id.map)).getMap();
 
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearAllTextViews();
+
+
                 showAllElementsSearch();
 
+            }
+        });
+
+        on_map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Map.class);
+                startActivity(intent);
             }
         });
 
@@ -156,16 +192,22 @@ public class Find_travel extends Fragment {
 
 
 
+
                 Travel[] mStringArray = new Travel[travels_arraylist.size()];
                 mStringArray = travels_arraylist.toArray(mStringArray);
 
                 Travel test_model = null;
                 for(int i = 0; i < mStringArray.length ; i++){
+
                     if (id_travel == mStringArray[i].TAG_ID) {
                         test_model = new Travel(mStringArray[i].TAG_ID,
                                 mStringArray[i].TAG_startPoint,
                                 mStringArray[i].TAG_finishPoint,
-                                mStringArray[i].TAG_intermedientePoints,
+                                mStringArray[i].TAG_waypoint1,
+                                mStringArray[i].TAG_waypoint2,
+                                mStringArray[i].TAG_waypoint3,
+                                mStringArray[i].TAG_waypoint4,
+                                mStringArray[i].TAG_waypoint5,
                                 mStringArray[i].TAG_price,
                                 mStringArray[i].TAG_seats,
                                 mStringArray[i].TAG_dataFirst,
@@ -192,9 +234,11 @@ public class Find_travel extends Fragment {
                                 );
                     }
                 }
-                clearAllTextViews();
-                viewAllDetailPerson(test_model);
-                //back.setVisibility(View.VISIBLE);
+
+
+
+
+                showDetailOfTravel(test_model);
 
                 Log.d("JSON", test_model.TAG_ID + " "+ test_model.TAG_lastName);
 
@@ -225,7 +269,11 @@ public class Find_travel extends Fragment {
                         Travel travel = new Travel(jsonObject.getString(TAG_ID),
                                 jsonObject.getString(TAG_startPoint),
                                 jsonObject.getString(TAG_finishPoint),
-                                jsonObject.getString(TAG_intermedientePoints),
+                                jsonObject.getString(TAG_waypoint1),
+                                jsonObject.getString(TAG_waypoint2),
+                                jsonObject.getString(TAG_waypoint3),
+                                jsonObject.getString(TAG_waypoint4),
+                                jsonObject.getString(TAG_waypoint5),
                                 jsonObject.getString(TAG_price),
                                 jsonObject.getString(TAG_seats),
                                 jsonObject.getString(TAG_dataFirst),
@@ -270,51 +318,64 @@ public class Find_travel extends Fragment {
         });
     }
 
-    private void clearAllTextViews() {
-        name.setText("Ім'я: ");
-        sunname.setText("Прізвище: ");
-        age.setText("Вік: ");
-        driveExp.setText("Стаж водіння: ");
-        phoneNumber.setText("Номер телефону: ");
-        email.setText("E-Mail: ");
-        start_trav.setText("Початок маршруту: ");
-        end_trav.setText("Кінець маршруту: ");
-        intermedientePoints.setText("Проміжні пункти: ");
-        seats.setText("Кількість місць: ");
-        price.setText("Ціна за місце: ");
-        date.setText("Дата відправлення: ");
-        time.setText("Час відправлення: ");
+    private void showDetailOfTravel(Travel test_model) {
+
+        Intent intent = new Intent(getActivity(), Map.class);
+
+        intent.putExtra(String.valueOf(R.string.id), test_model.TAG_ID);
+        intent.putExtra(String.valueOf(R.string.firstName), test_model.TAG_firstName);
+        intent.putExtra(String.valueOf(R.string.lastName), test_model.TAG_lastName);
+        intent.putExtra(String.valueOf(R.string.age), test_model.TAG_age);
+        intent.putExtra(String.valueOf(R.string.drivingExp), test_model.TAG_drivingExp);
+        intent.putExtra(String.valueOf(R.string.phone), test_model.TAG_phone);
+        intent.putExtra(String.valueOf(R.string.prompt_email), test_model.TAG_mail);
+        intent.putExtra(String.valueOf(R.string.startPoint), test_model.TAG_startPoint);
+        intent.putExtra(String.valueOf(R.string.find_travel), test_model.TAG_finishPoint);
+        intent.putExtra(String.valueOf(R.string.seats), test_model.TAG_seats);
+        intent.putExtra(String.valueOf(R.string.price), test_model.TAG_price);
+        intent.putExtra(String.valueOf(R.string.price), test_model.TAG_price);
+        intent.putExtra(String.valueOf(R.string.dataFirst), test_model.TAG_dataFirst);
+        intent.putExtra(String.valueOf(R.string.timeFirst), test_model.TAG_timeFirst);
+        intent.putExtra(String.valueOf(R.string.waypoint1), test_model.TAG_waypoint1);
+        intent.putExtra(String.valueOf(R.string.waypoint2), test_model.TAG_waypoint2);
+        intent.putExtra(String.valueOf(R.string.waypoint3), test_model.TAG_waypoint3);
+        intent.putExtra(String.valueOf(R.string.waypoint4), test_model.TAG_waypoint4);
+        intent.putExtra(String.valueOf(R.string.waypoint5), test_model.TAG_waypoint5);
+
+
+        startActivity(intent);
     }
+
+
 
     private void viewAllDetailPerson(Travel testModel) {
 
         main_laya.setVisibility(View.GONE);
         hide_laya.setVisibility(View.VISIBLE);
         //set text views
-        name.setText(name.getText().toString()+testModel.TAG_firstName);
-        sunname.setText(sunname.getText().toString()+testModel.TAG_lastName);
-        age.setText(age.getText().toString()+testModel.TAG_age);
-        driveExp.setText(driveExp.getText().toString()+testModel.TAG_drivingExp);
-        phoneNumber.setText(phoneNumber.getText().toString()+testModel.TAG_phone);
-        email.setText(email.getText().toString()+testModel.TAG_mail);
+      /*  name.setText(name.getText().toString() + testModel.TAG_firstName);
+        sunname.setText(sunname.getText().toString() + testModel.TAG_lastName);
+        age.setText(age.getText().toString() + testModel.TAG_age);
+        driveExp.setText(driveExp.getText().toString() + testModel.TAG_drivingExp);
+        phoneNumber.setText(phoneNumber.getText().toString() + testModel.TAG_phone);
+        email.setText(email.getText().toString() + testModel.TAG_mail);
 
-        start_trav.setText(start_trav.getText().toString()+testModel.TAG_startPoint);
-        end_trav.setText(end_trav.getText().toString()+testModel.TAG_finishPoint);
-        intermedientePoints.setText(intermedientePoints.getText().toString()+testModel.TAG_intermedientePoints);
-        seats.setText(seats.getText().toString()+testModel.TAG_seats);
-        price.setText(price.getText().toString()+testModel.TAG_price);
-        date.setText(date.getText().toString()+testModel.TAG_dataFirst);
-        time.setText(time.getText().toString() + testModel.TAG_timeFirst);
-
-        //-end set textviews
-
+        start_trav.setText(start_trav.getText().toString() + testModel.TAG_startPoint);
+        end_trav.setText(end_trav.getText().toString() + testModel.TAG_finishPoint);
+        seats.setText(seats.getText().toString() + testModel.TAG_seats);
+        price.setText(price.getText().toString() + testModel.TAG_price);
+        date.setText(date.getText().toString() + testModel.TAG_dataFirst);
+        time.setText(time.getText().toString() + testModel.TAG_timeFirst);*/
 
 
     }
 
 
-    private void hideAllElementsSearch(){
-        //hide main layout
+    private void cleareData(){
+        travels_arraylist.clear();
+        listViewTravels = null;
+
+        //
     }
     private void showAllElementsSearch(){
 

@@ -51,7 +51,42 @@
   </array>
 - <!--  Content Description 
   --> 
-  <string name="desc_list_item_icon">Item Icon</string> 
+  <string name="desc_list_item_icon">Item Icon</string>
+    <string name="title_activity_map">Map</string>
+
+
+
+    <string name="id">id</string>
+    <string name="startPoint">startPoint</string>
+    <string name="finishPoint">finishPoint</string>
+    <string name="waypoint1">waypoint1</string>
+    <string name="waypoint2">waypoint2</string>
+    <string name="waypoint3">waypoint3</string>
+    <string name="waypoint4">waypoint4</string>
+    <string name="waypoint5">waypoint5</string>
+    <string name="price">price</string>
+    <string name="seats">seats</string>
+    <string name="dataFirst">dataFirst</string>
+    <string name="dataLast">dataLast</string>
+    <string name="timeFirst">timeFirst</string>
+    <string name="timeLast">timeLast</string>
+    <string name="firstName">firstName</string>
+    <string name="lastName">lastName</string>
+    <string name="adress">adress</string>
+    <string name="phone">phone</string>
+    <string name="mail">mail</string>
+    <string name="age">age</string>
+    <string name="drivingExp">drivingExp</string>
+    <string name="avatar">avatar</string>
+    <string name="carBrand">carBrand</string>
+    <string name="carModel">carModel</string>
+    <string name="carType">carType</string>
+    <string name="carPhoto">carPhoto</string>
+    <string name="carColor">carColor</string>
+    <string name="carSizeBaggage">carSizeBaggage</string>
+    <string name="carNumberSeats">carNumberSeats</string>
+    <string name="carAnimals">carAnimals</string>
+    <string name="carSmoke">carSmoke</string>
 
 
 
