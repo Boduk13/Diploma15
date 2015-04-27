@@ -80,7 +80,7 @@ public class Login extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
-                clear_sharapref();
+
             }
         });
 
@@ -186,10 +186,5 @@ public class Login extends ActionBarActivity {
     }
 
 
-    private void clear_sharapref() {
-        SharedPreferences settings = getSharedPreferences("UserInfo", MODE_PRIVATE);
 
-        settings.edit().remove("id").commit();
-
-    }
 }

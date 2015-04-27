@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.bodik13.duplom15.Login;
 import com.example.bodik13.duplom15.Map;
 import com.example.bodik13.duplom15.R;
 import com.example.bodik13.duplom15.slidingmenu.adapter.NavDrawerListAdapter;
@@ -147,6 +149,13 @@ public class MainActivity extends ActionBarActivity {
 		switch (item.getItemId()) {
 		case R.id.action_settings:
 			return true;
+        case R.id.action_logout:
+            clear_sharapref();
+            MainActivity.this.finish();
+            Intent login = new Intent(MainActivity.this, Login.class);
+            startActivity(login);
+                return true;
+
 		default:
 			return super.onOptionsItemSelected(item);
 		}
@@ -160,6 +169,7 @@ public class MainActivity extends ActionBarActivity {
 		// if nav drawer is opened, hide the action items
 		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
 		menu.findItem(R.id.action_settings).setVisible(!drawerOpen);
+		menu.findItem(R.id.action_logout).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
 	}
 
@@ -189,8 +199,6 @@ public class MainActivity extends ActionBarActivity {
 			fragment = new PagesFragment();
 			break;
 		case 5:
-
-
 			fragment = new WhatsHotFragment();
 			break;
 
@@ -238,5 +246,14 @@ public class MainActivity extends ActionBarActivity {
 		// Pass any configuration change to the drawer toggls
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
+    private void clear_sharapref() {
+        SharedPreferences settings = getSharedPreferences("UserInfo", MODE_PRIVATE);
+
+        settings.edit().remove("id").commit();
+        settings.edit().remove("Username").commit();
+        settings.edit().remove("Password").commit();
+
+
+    }
 
 }
