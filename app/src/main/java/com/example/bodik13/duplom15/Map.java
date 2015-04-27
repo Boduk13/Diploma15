@@ -7,16 +7,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -28,11 +25,11 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class Map extends Activity  {
+public class Map extends Activity {
 
-    private static final LatLng LOWER_MANHATTAN = new LatLng(40.722543, -73.998585);
-    private static final LatLng BROOKLYN_BRIDGE = new LatLng(40.7057, -73.9964);
-    private static final LatLng WALL_STREET = new LatLng(40.7064, -74.0094);
+    private LatLng START_point = new LatLng(49.5483546, 25.5976691);
+    //private static final LatLng BROOKLYN_BRIDGE = new LatLng(40.7057, -73.9964);
+    private LatLng END_point = new LatLng(48.9117731, 24.717129);
 
     //view detail travel
     TextView name = null;
@@ -53,12 +50,14 @@ public class Map extends Activity  {
     ReadTask downloadTask = null;
 
 
+    ParserTask parserTask;
 
     MapFragment mapFragment;
     GoogleMap map;
     Button btn_view_map = null;
     LinearLayout map_layout = null;
     final String TAG = "myLogs";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,59 +79,59 @@ public class Map extends Activity  {
 
     private void init() {
         MarkerOptions options = new MarkerOptions();
-        options.position(LOWER_MANHATTAN);
-        options.position(BROOKLYN_BRIDGE);
-        options.position(WALL_STREET);
+        options.position(START_point);
+        //options.position(BROOKLYN_BRIDGE);
+        options.position(END_point);
         map.addMarker(options);
         String url = getMapsApiDirectionsUrl();
         downloadTask = new ReadTask();
         downloadTask.execute(url);
 
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(BROOKLYN_BRIDGE,
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(START_point,
                 13));
         addMarkers();
     }
 
-public void getAllTextView(){
-    start_trav = (TextView) findViewById(R.id.start_trav);
-    end_trav = (TextView) findViewById(R.id.end_trav);
-    seats = (TextView) findViewById(R.id.seats);
-    price = (TextView) findViewById(R.id.price);
-    date = (TextView) findViewById(R.id.date);
-    time = (TextView) findViewById(R.id.time);
-    name = (TextView) findViewById(R.id.name);
-    sunname = (TextView) findViewById(R.id.sunname);
-    age = (TextView) findViewById(R.id.age);
-    driveExp = (TextView) findViewById(R.id.drivingExp);
-    phoneNumber = (TextView) findViewById(R.id.phone_number);
-    email = (TextView) findViewById(R.id.email);
+    public void getAllTextView() {
+        start_trav = (TextView) findViewById(R.id.start_trav);
+        end_trav = (TextView) findViewById(R.id.end_trav);
+        seats = (TextView) findViewById(R.id.seats);
+        price = (TextView) findViewById(R.id.price);
+        date = (TextView) findViewById(R.id.date);
+        time = (TextView) findViewById(R.id.time);
+        name = (TextView) findViewById(R.id.name);
+        sunname = (TextView) findViewById(R.id.sunname);
+        age = (TextView) findViewById(R.id.age);
+        driveExp = (TextView) findViewById(R.id.drivingExp);
+        phoneNumber = (TextView) findViewById(R.id.phone_number);
+        email = (TextView) findViewById(R.id.email);
 
-    clearAllTextViews();
+        clearAllTextViews();
 
-    //set text views
-    name.setText(name.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.firstName)));
-    sunname.setText(sunname.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.lastName)));
-    age.setText(age.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.age)));
-    driveExp.setText(driveExp.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.drivingExp)));
-    phoneNumber.setText(phoneNumber.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.phone)));
-    email.setText(email.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.prompt_email)));
-
-    start_trav.setText(start_trav.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.startPoint)));
-    end_trav.setText(end_trav.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.find_travel)));
-    seats.setText(seats.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.seats)));
-    price.setText(price.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.price)));
-    date.setText(date.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.dataFirst)));
-    time.setText(time.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.timeFirst)));
-
-String waypoint1 = getIntent().getStringExtra(String.valueOf(R.string.waypoint1));
-String waypoint2 = getIntent().getStringExtra(String.valueOf(R.string.waypoint2));
-String waypoint3 = getIntent().getStringExtra(String.valueOf(R.string.waypoint3));
-String waypoint4 = getIntent().getStringExtra(String.valueOf(R.string.waypoint4));
-String waypoint5 = getIntent().getStringExtra(String.valueOf(R.string.waypoint5));
-
-}
+        //set text views
+        name.setText(name.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.firstName)));
+        sunname.setText(sunname.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.lastName)));
+        age.setText(age.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.age)));
+        driveExp.setText(driveExp.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.drivingExp)));
+        phoneNumber.setText(phoneNumber.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.phone)));
+        email.setText(email.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.prompt_email)));
 
 
+        start_trav.setText(start_trav.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.startPoint)));
+        end_trav.setText(end_trav.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.find_travel)));
+        seats.setText(seats.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.seats)));
+        price.setText(price.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.price)));
+        date.setText(date.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.dataFirst)));
+        time.setText(time.getText().toString() + getIntent().getStringExtra(String.valueOf(R.string.timeFirst)));
+
+        String waypoint1 = getIntent().getStringExtra(String.valueOf(R.string.waypoint1));
+        String waypoint2 = getIntent().getStringExtra(String.valueOf(R.string.waypoint2));
+        String waypoint3 = getIntent().getStringExtra(String.valueOf(R.string.waypoint3));
+        String waypoint4 = getIntent().getStringExtra(String.valueOf(R.string.waypoint4));
+        String waypoint5 = getIntent().getStringExtra(String.valueOf(R.string.waypoint5));
+
+
+    }
 
 
     private void clearAllTextViews() {
@@ -174,27 +173,25 @@ String waypoint5 = getIntent().getStringExtra(String.valueOf(R.string.waypoint5)
     }
 
     private String getMapsApiDirectionsUrl() {
-        String waypoints = "waypoints=optimize:true|"
-                + LOWER_MANHATTAN.latitude + "," + LOWER_MANHATTAN.longitude
-                + "|" + "|" + BROOKLYN_BRIDGE.latitude + ","
-                + BROOKLYN_BRIDGE.longitude + "|" + WALL_STREET.latitude + ","
-                + WALL_STREET.longitude;
+        String waypoints = START_point.latitude + "," + START_point.longitude + "&destination="
+                + END_point.latitude + "," + END_point.longitude;
 
         String sensor = "sensor=false";
         String params = waypoints + "&" + sensor;
         String output = "json";
         String end = "&origin=true&destination=true";
-        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + params+end;
+        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + params + end;
+        url = "http://maps.googleapis.com/maps/api/directions/json?origin=" + waypoints + "&sensor=false&units=metric&mode=driving";
         return url;
     }
 
     private void addMarkers() {
         if (map != null) {
-            map.addMarker(new MarkerOptions().position(BROOKLYN_BRIDGE)
-                    .title("First Point"));
-            map.addMarker(new MarkerOptions().position(LOWER_MANHATTAN)
+            //map.addMarker(new MarkerOptions().position(BROOKLYN_BRIDGE)
+            //.title("First Point"));
+            map.addMarker(new MarkerOptions().position(START_point)
                     .title("Second Point"));
-            map.addMarker(new MarkerOptions().position(WALL_STREET)
+            map.addMarker(new MarkerOptions().position(END_point)
                     .title("Third Point"));
         }
     }
@@ -215,7 +212,7 @@ String waypoint5 = getIntent().getStringExtra(String.valueOf(R.string.waypoint5)
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            new ParserTask().execute(result);
+            parserTask = (ParserTask) new ParserTask().execute(result);
         }
     }
 
@@ -262,33 +259,11 @@ String waypoint5 = getIntent().getStringExtra(String.valueOf(R.string.waypoint5)
 
                 polyLineOptions.addAll(points);
                 polyLineOptions.width(2);
-                polyLineOptions.color(Color.BLUE);
+                polyLineOptions.color(Color.RED);
             }
 
             map.addPolyline(polyLineOptions);
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
-    public void onBackPressed() {
-
-
-
-
-        //onStop();
-        //onLowMemory();
-        //onDestroy();
-        finish();
-        super.onBackPressed();
-    }
 }

@@ -144,23 +144,6 @@ public class Find_travel extends Fragment {
         on_map = (Button) view.findViewById(R.id.on_map);
         hide_laya = (LinearLayout) view.findViewById(R.id.hide_layaut);
         main_laya = (LinearLayout) view.findViewById(R.id.main_layout);
-        ///_detail travel
-     /*   start_trav = (TextView) view.findViewById(R.id.start_trav);
-        end_trav = (TextView) view.findViewById(R.id.end_trav);
-        seats = (TextView) view.findViewById(R.id.seats);
-        price = (TextView) view.findViewById(R.id.price);
-        date = (TextView) view.findViewById(R.id.date);
-        time = (TextView) view.findViewById(R.id.time);
-        name = (TextView) view.findViewById(R.id.name);
-        sunname = (TextView) view.findViewById(R.id.sunname);
-        age = (TextView) view.findViewById(R.id.age);
-        driveExp = (TextView) view.findViewById(R.id.drivingExp);
-        phoneNumber = (TextView) view.findViewById(R.id.phone_number);
-        email = (TextView) view.findViewById(R.id.email);*/
-
-        //---
-
-        //mGoogleMap = ((MapFragment) getChildFragmentManager().findFragmentById(R.id.map)).getMap();
 
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -346,29 +329,6 @@ public class Find_travel extends Fragment {
         startActivity(intent);
     }
 
-
-
-    private void viewAllDetailPerson(Travel testModel) {
-
-        main_laya.setVisibility(View.GONE);
-        hide_laya.setVisibility(View.VISIBLE);
-        //set text views
-      /*  name.setText(name.getText().toString() + testModel.TAG_firstName);
-        sunname.setText(sunname.getText().toString() + testModel.TAG_lastName);
-        age.setText(age.getText().toString() + testModel.TAG_age);
-        driveExp.setText(driveExp.getText().toString() + testModel.TAG_drivingExp);
-        phoneNumber.setText(phoneNumber.getText().toString() + testModel.TAG_phone);
-        email.setText(email.getText().toString() + testModel.TAG_mail);
-
-        start_trav.setText(start_trav.getText().toString() + testModel.TAG_startPoint);
-        end_trav.setText(end_trav.getText().toString() + testModel.TAG_finishPoint);
-        seats.setText(seats.getText().toString() + testModel.TAG_seats);
-        price.setText(price.getText().toString() + testModel.TAG_price);
-        date.setText(date.getText().toString() + testModel.TAG_dataFirst);
-        time.setText(time.getText().toString() + testModel.TAG_timeFirst);*/
-
-
-    }
 
 
     private void cleareData(){
