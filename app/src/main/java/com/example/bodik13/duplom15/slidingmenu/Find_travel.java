@@ -141,7 +141,7 @@ public class Find_travel extends Fragment {
         search = (Button) view.findViewById(R.id.search_btn);
         listViewTravels = (ListView) view.findViewById(R.id.list_travels);
         back = (Button) view.findViewById(R.id.btn_back);
-        on_map = (Button) view.findViewById(R.id.on_map);
+        //on_map = (Button) view.findViewById(R.id.on_map);
         hide_laya = (LinearLayout) view.findViewById(R.id.hide_layaut);
         main_laya = (LinearLayout) view.findViewById(R.id.main_layout);
 
@@ -156,13 +156,13 @@ public class Find_travel extends Fragment {
             }
         });
 
-        on_map.setOnClickListener(new View.OnClickListener() {
+        /*on_map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), Map.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
         //textView = (TextView) view.findViewById(R.id.txtLabel);
 

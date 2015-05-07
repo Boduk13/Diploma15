@@ -14,9 +14,14 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="700px"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:alpha=".8"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/greybackground"
         >
 
         <LinearLayout
@@ -143,7 +148,8 @@
                 android:id="@+id/map_layout"
                 android:visibility="visible"
                 android:padding="5dp"
-                android:background="@drawable/roundborder">
+                android:background="@drawable/roundborder"
+                >
                 <fragment
                     android:id="@+id/map"
                     android:layout_width="match_parent"

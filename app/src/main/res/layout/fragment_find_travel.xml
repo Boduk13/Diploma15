@@ -15,10 +15,16 @@
         android:id="@+id/main_layout"
         android:orientation="vertical"
         android:layout_width="700px"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
         android:alpha=".7"
         android:visibility="visible"
+        android:background="@drawable/greybackground"
+
         >
 
         <EditText
@@ -64,7 +70,7 @@
         <ListView
             android:id="@+id/list_travels"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
 
             android:drawablePadding="10dp"
             android:layout_marginTop="15dp"
@@ -72,6 +78,7 @@
             android:layout_marginBottom="40px"
             >
             </ListView>
+
 
 
     </LinearLayout>
@@ -199,18 +206,6 @@
             >
 
 
-
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10px"
-
-                android:id="@+id/on_map"
-                android:background="@drawable/btn"
-                android:textColor="#ffffff"
-                android:textAlignment="center"
-                android:text="Показати маршрут на карті"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -220,7 +215,8 @@
                 android:background="@drawable/btn"
                 android:textColor="#ffffff"
                 android:textAlignment="center"
-                android:text="Back"/>
+                android:text="Back"
+                android:visibility="gone"/>
         </LinearLayout>
 
 

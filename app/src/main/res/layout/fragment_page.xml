@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+
+        <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical"
+            android:background="@drawable/greybackground">
+
+            <ImageView
+
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/plan"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <EditText
+
+                android:id="@+id/firstName"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:hint="@string/firstName"
+                android:background="#f3f3f3"
+                android:paddingLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/abc_primary_text_disable_only_material_light"
+                android:editable="false"/>
+
+            <EditText
+                android:id="@+id/lastName"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:hint="@string/lastName"
+                android:background="#f3f3f3"
+                android:paddingLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/abc_primary_text_disable_only_material_light"
+                android:editable="false"/>
+
+            <EditText
+                android:id="@+id/mail"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:hint="@string/mail"
+                android:background="#f3f3f3"
+                android:paddingLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/abc_primary_text_disable_only_material_light"
+                android:editable="false"/>
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:hint="@string/phone"
+                android:background="#f3f3f3"
+                android:paddingLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/abc_primary_text_disable_only_material_light"
+                android:editable="false"/>
+
+            <EditText
+                android:id="@+id/adress"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:hint="@string/adress"
+                android:background="#f3f3f3"
+                android:paddingLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/abc_primary_text_disable_only_material_light"
+                android:editable="false"/>
+
+            <EditText
+                android:id="@+id/age"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:hint="@string/age"
+                android:background="#f3f3f3"
+                android:paddingLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/abc_primary_text_disable_only_material_light"
+                android:editable="false"/>
+
+            <EditText
+                android:id="@+id/drivingExp"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:hint="@string/drivingExp"
+                android:background="#f3f3f3"
+                android:paddingLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/abc_primary_text_disable_only_material_light"
+                android:editable="false"
+                />
+
+            <Button android:layout_width="190dp"
+                android:layout_height="38dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:text="submit"
+                android:textColor="#fff"
+                android:background="@drawable/btn"
+                android:visibility="gone"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

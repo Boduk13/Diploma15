@@ -21,7 +21,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.bodik13.duplom15.Login;
-import com.example.bodik13.duplom15.Map;
 import com.example.bodik13.duplom15.R;
 import com.example.bodik13.duplom15.slidingmenu.adapter.NavDrawerListAdapter;
 import com.example.bodik13.duplom15.slidingmenu.model.NavDrawerItem;
@@ -196,7 +195,7 @@ public class MainActivity extends ActionBarActivity {
 			fragment = new CommunityFragment();
 			break;
 		case 4:
-			fragment = new PagesFragment();
+			fragment = new PageFragment();
 			break;
 		case 5:
 			fragment = new WhatsHotFragment();

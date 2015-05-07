@@ -21,7 +21,6 @@
     <string name="title_activity_registration1">Registration1</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="title_activity_all_products">AllProductsActivity</string>
     <string name="title_activity_add_travel">AddTravelAct</string>
 
 <!-- TODO: Remove or change this placeholder text -->
@@ -30,14 +29,15 @@
 
 
   <string name="drawer_open">Slider Menu Opened</string> 
-  <string name="drawer_close">Slider Menu Closed</string> 
+  <string name="drawer_close">Slider Menu Closed</string>
+
 <string-array name="nav_drawer_items">
   <item>Головний екран</item>
   <item>Запропонувати поїздку</item>
   <item>Знайти поїздку</item>
   <item>Communities</item> 
   <item>Персональна сторінка</item>
-  <item>Гарячі пропозиції</item>
+  <item>Мій профіль</item>
   </string-array>
 - <!--  Nav Drawer List Item Icons 
   --> 
