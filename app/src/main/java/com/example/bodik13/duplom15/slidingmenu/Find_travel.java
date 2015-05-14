@@ -112,24 +112,7 @@ public class Find_travel extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_find_travel, container, false);
-       /* View v = inflater.inflate(R.layout.fragment_find_travel, container, false);
 
-        map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-
-        Marker hamburg = map.addMarker(new MarkerOptions().position(HAMBURG)
-                .title("Hamburg"));
-        Marker kiel = map.addMarker(new MarkerOptions()
-                .position(KIEL)
-                .title("Kiel")
-                .snippet("Kiel is cool")
-                .icon(BitmapDescriptorFactory
-                        .fromResource(R.drawable.ic_launcher)));
-
-        // Move the camera instantly to hamburg with a zoom of 15.
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(HAMBURG, 15));
-
-        // Zoom in, animating the camera.
-        map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);*/
         return rootView;
     }
     @Override
@@ -156,21 +139,14 @@ public class Find_travel extends Fragment {
             }
         });
 
-        /*on_map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Map.class);
-                startActivity(intent);
-            }
-        });*/
 
-        //textView = (TextView) view.findViewById(R.id.txtLabel);
+
 
         listViewTravels.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 listViewTravels.getSelectedItemId();
-                String selected = ((TextView) view.findViewById(R.id.firstName)).getText().toString();
+               // String selected = ((TextView) view.findViewById(R.id.firstName)).getText().toString();
                 String id_travel = ((TextView) view.findViewById(R.id.id_travel)).getText().toString();
 
 
@@ -217,9 +193,6 @@ public class Find_travel extends Fragment {
                                 );
                     }
                 }
-
-
-
 
                 showDetailOfTravel(test_model);
 
