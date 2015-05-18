@@ -60,8 +60,6 @@ public class BoxAdapter extends BaseAdapter {
 
         Travel travel = getProduct(position);
 
-        // заполняем View в пункте списка данными из товаров: наименование, цена
-        // и картинка
         ((TextView) view.findViewById(R.id.firstName)).setText(travel.TAG_firstName + " " + travel.TAG_lastName);
         ((TextView) view.findViewById(R.id.tvPrice)).setText(travel.TAG_price + " грн");
         ((TextView) view.findViewById(R.id.date_start)).setText(travel.TAG_dataFirst);
