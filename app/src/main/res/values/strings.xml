@@ -35,9 +35,9 @@
   <item>Головний екран</item>
   <item>Запропонувати поїздку</item>
   <item>Знайти поїздку</item>
-  <item>Communities</item> 
-  <item>Персональна сторінка</item>
+  <item>Мої поїздки</item>
   <item>Мій профіль</item>
+  <!--<item>Мій профіль</item>-->
   </string-array>
 - <!--  Nav Drawer List Item Icons 
   --> 
@@ -49,7 +49,7 @@
   <item>@drawable/ic_photos</item> 
   <item>@drawable/ic_communities</item> 
   <item>@drawable/ic_pages</item> 
-  <item>@drawable/ic_whats_hot</item> 
+ <!-- <item>@drawable/ic_whats_hot</item> -->
   </array>
 - <!--  Content Description 
   --> 
