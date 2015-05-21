@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -30,6 +32,8 @@ import java.util.ArrayList;
 
 
 public class Login extends ActionBarActivity {
+    EditText login_user;
+    EditText login_pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,15 +88,44 @@ public class Login extends ActionBarActivity {
             }
         });
 
+        login_user = (EditText) findViewById(R.id.login_user);
+        login_pass = (EditText) findViewById(R.id.pass_user);
+
         //---
+
+        login_user.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                is_Valid_Person_Name(login_user);
+
+            }
+        });
+
+        login_pass.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                is_Valid_Person_Password(login_pass);
+}
+        });
+
     }
 
     private boolean login() {
 
         ArrayList<User> users = all_users();
-
-        EditText login_user = (EditText) findViewById(R.id.login_user);
-        EditText login_pass = (EditText) findViewById(R.id.pass_user);
 
         String login = login_user.getText().toString();
         String password = login_pass.getText().toString();
@@ -185,6 +218,31 @@ public class Login extends ActionBarActivity {
         editor.commit();
     }
 
+    public void is_Valid_Person_Name(EditText edt) throws NumberFormatException {
+        if (edt.getText().toString().equals("")) {
+            edt.setError("Введіть електронну адресу для входу!");
+        } else
 
+        {
+            if (!edt.getText().toString().matches("[a-zA-Z0-9]+[a-zA-Z0-9._]*[a-zA-Z0-9]*+@[a-zA-Z0-9]*[.]([a-z][a-z]|[a-z][a-z][a-z])")) {
+                edt.setError("Вашу електронну адресу введено невірно, перевірте і повторіть спробу!");
+
+            }
+        }
+
+    }
+
+    public void is_Valid_Person_Password(EditText edt) throws NumberFormatException {
+        if (edt.getText().toString().equals("")) {
+        } else
+
+        {
+            if (!edt.getText().toString().matches("^(?=.*[0-9].*[0-9])[a-zA-Z0-9]{3,}$")) {
+                edt.setError("Пароль некоректний!");
+            }
+        }
+
+
+    }
 
 }

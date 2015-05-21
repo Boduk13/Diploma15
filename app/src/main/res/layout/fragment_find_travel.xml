@@ -48,9 +48,7 @@
             android:id="@+id/finish"
             android:layout_gravity="center"
             android:text="Lviv"
-
             android:background="@drawable/ovalborder"
-
             android:padding="8dp"/>
 
         <Button

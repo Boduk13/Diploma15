@@ -74,7 +74,7 @@ public class MainActivity extends ActionBarActivity {
 		// Pages
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
 		// What's hot, We  will add a counter here
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1), true, "50+"));
+		//navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1), true, "50+"));
 		
 
 		// Recycle the typed array
@@ -192,7 +192,7 @@ public class MainActivity extends ActionBarActivity {
 			fragment = new Find_travel();
 			break;
 		case 3:
-			fragment = new CommunityFragment();
+			fragment = new MyTravelFragment();
 			break;
 		case 4:
 			fragment = new PageFragment();

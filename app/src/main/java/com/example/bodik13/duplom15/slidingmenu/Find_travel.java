@@ -146,12 +146,8 @@ public class Find_travel extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 listViewTravels.getSelectedItemId();
-               // String selected = ((TextView) view.findViewById(R.id.firstName)).getText().toString();
+
                 String id_travel = ((TextView) view.findViewById(R.id.id_travel)).getText().toString();
-
-
-
-
                 Travel[] mStringArray = new Travel[travels_arraylist.size()];
                 mStringArray = travels_arraylist.toArray(mStringArray);
 

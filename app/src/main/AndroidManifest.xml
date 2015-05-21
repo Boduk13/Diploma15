@@ -57,11 +57,10 @@
 
         <activity
             android:name=".Login"
-            android:label="@string/title_activity_login" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
 
-            </intent-filter>
         </activity>
         <activity
             android:name=".Registration"

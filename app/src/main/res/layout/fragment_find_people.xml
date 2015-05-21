@@ -2,21 +2,169 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    
-    <TextView
-        android:id="@+id/txtLabel"
-         android:layout_width="wrap_content"
+
+    <LinearLayout android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="30dp"
+        android:alpha=".7"
+        android:orientation="vertical"
+        android:background="@drawable/greybackground">
+
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <EditText
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:hint="Початок маршруту"
+                android:background="#f3f3f3"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/abc_primary_text_disable_only_material_light"
+                android:layout_marginRight="5dp" />
+            <EditText
+                android:layout_weight="1"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:hint="Кінець маршруту"
+                android:background="#f3f3f3"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/abc_primary_text_disable_only_material_light"
+                android:layout_marginLeft="5dp" />
+            </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textSize="16dp"
-        android:text="Find People View"/>
-    
-    <ImageView android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtLabel"
-        android:src="@drawable/ic_people"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
+        android:orientation="horizontal"
+        >
+        <EditText android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:hint="Кількість місць"
+            android:background="#f3f3f3"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/abc_primary_text_disable_only_material_light"
+            android:inputType="textAutoComplete"
+            android:layout_marginRight="5dp" />
+        <EditText android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:hint="Ціна за місце"
+            android:background="#f3f3f3"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/abc_primary_text_disable_only_material_light" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtStartTrav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true"
+            android:textSize="16dp"
+            android:layout_marginTop="10dp"
+            android:text="Дата і час початку поїздки"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <EditText android:layout_width="fill_parent"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:hint="Дата"
+                android:background="#f3f3f3"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/abc_primary_text_disable_only_material_light"
+                android:inputType="textAutoComplete"
+                android:layout_marginRight="5dp" />
+
+            <EditText android:layout_width="fill_parent"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:hint="Час"
+                android:background="#f3f3f3"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/abc_primary_text_disable_only_material_light" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/TVendTrav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true"
+            android:textSize="16dp"
+            android:layout_marginTop="10dp"
+            android:text="Дата і час кінця поїздки"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <EditText android:layout_width="fill_parent"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:hint="Дата"
+                android:background="#f3f3f3"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/abc_primary_text_disable_only_material_light"
+                android:inputType="textAutoComplete"
+                android:layout_marginRight="5dp" />
+            <EditText android:layout_width="fill_parent"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:hint="Час
+                "
+                android:background="#f3f3f3"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/abc_primary_text_disable_only_material_light" />
+        </LinearLayout>
+
+        <EditText android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:hint="Автомобіль"
+            android:background="#f3f3f3"
+            android:paddingLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/abc_primary_text_disable_only_material_light"/>
+        <Button android:layout_width="190dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:text="Зберегти"
+            android:textColor="#fff"
+            android:background="@drawable/btn"
+            />
+
+    </LinearLayout>
     
 
 </RelativeLayout>
