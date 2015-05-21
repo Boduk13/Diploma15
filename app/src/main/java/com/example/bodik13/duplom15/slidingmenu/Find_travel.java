@@ -12,12 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.example.bodik13.duplom15.BoxAdapter;
@@ -45,9 +47,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
-public class Find_travel extends Fragment {
+public class Find_travel extends Fragment implements AdapterView.OnItemClickListener {
     //URL to get JSON Array
     String url;
 
@@ -85,8 +93,12 @@ public class Find_travel extends Fragment {
     public String TAG_carSmoke="carSmoke";
 
 
-    EditText start = null;
-    EditText finish = null;
+    //EditText start = null;
+    //EditText finish = null;
+
+    AutoCompleteTextView start = null;
+    AutoCompleteTextView finish = null;
+
     Button search = null;
     Button back = null;
     Button on_map = null;
@@ -118,9 +130,16 @@ public class Find_travel extends Fragment {
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         // save views as variables in this method
-        // "view" is the one returned from onCreateView
-        start = (EditText) view.findViewById(R.id.start);
-        finish = (EditText) view.findViewById(R.id.finish);
+
+        //start = (EditText) view.findViewById(R.id.start);
+        //finish = (EditText) view.findViewById(R.id.finish);
+        start = (AutoCompleteTextView) view.findViewById(R.id.start);
+        finish = (AutoCompleteTextView) view.findViewById(R.id.finish);
+        start.setAdapter(new GooglePlacesAutocompleteAdapter(getActivity().getApplicationContext(), R.layout.list_item));
+        start.setOnItemClickListener(this);
+        finish.setAdapter(new GooglePlacesAutocompleteAdapter(getActivity().getApplicationContext(), R.layout.list_item));
+        finish.setOnItemClickListener(this);
+
         search = (Button) view.findViewById(R.id.search_btn);
         listViewTravels = (ListView) view.findViewById(R.id.list_travels);
         back = (Button) view.findViewById(R.id.btn_back);
@@ -209,7 +228,11 @@ public class Find_travel extends Fragment {
                 String sStart = start.getText().toString();
                 String sFinidh = finish.getText().toString();
 
-                url = "http://tempak.esy.es/API/getTrips?first=" + sStart + "&second=" + sFinidh;
+                try {
+                    url = "http://tempak.esy.es/API/getTrips?first=" +   URLEncoder.encode(sStart, "UTF-8")+ "&second=" + URLEncoder.encode(sFinidh, "UTF-8");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
 
                 JSONArray jsonArray = travels(url);
 
@@ -352,6 +375,13 @@ public class Find_travel extends Fragment {
         }
         return jArray;
     }
+
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        String str = (String) adapterView.getItemAtPosition(position);
+        //Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+    }
+
+
 
 
 

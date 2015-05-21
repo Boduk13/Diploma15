@@ -31,6 +31,7 @@
                 android:layout_marginTop="15dp"
                 android:textColor="@color/abc_primary_text_disable_only_material_light"
                 android:layout_marginRight="5dp" />
+
             <EditText
                 android:layout_weight="1"
                 android:layout_width="fill_parent"
